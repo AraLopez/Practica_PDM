@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.practicas_pdm.R;
+import com.example.practicas_pdm.ScrollingActivity;
 import com.example.practicas_pdm.ui.login.LoginViewModel;
 import com.example.practicas_pdm.ui.login.LoginViewModelFactory;
 
@@ -141,6 +143,10 @@ public class LoginActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                respuesta = response.toString();
+                                if (respuesta.indexOf("true") == 0){
+                                    sendMessage(v);
+                                }
                                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                             }
                         }, new Response.ErrorListener() {
@@ -162,5 +168,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    /** Called when the user taps the Send button */
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, ScrollingActivity.class);
+        intent.putExtra(RESPONSE, respuesta);
+        startActivity(intent);
     }
 }
