@@ -63,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
+
+
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -135,7 +137,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+                String m = "Sent request";
+                Toast.makeText(getApplicationContext(), m, Toast.LENGTH_LONG).show();
+                //loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
                 url = url + "email=" + usernameEditText.getText().toString() + "&password=" + passwordEditText.getText().toString();
@@ -145,9 +149,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 respuesta = response.toString();
                                 if (respuesta.indexOf("true") == 0){
+                                    //loadingProgressBar.setVisibility(View.VISIBLE);
                                     sendMessage(v);
                                 }
-                                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -172,8 +176,10 @@ public class LoginActivity extends AppCompatActivity {
 
     /** Called when the user taps the Send button */
     public void sendMessage(View view) {
+        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
         Intent intent = new Intent(this, ScrollingActivity.class);
         intent.putExtra(RESPONSE, respuesta);
+        //loadingProgressBar.setVisibility(View.INVISIBLE);
         startActivity(intent);
     }
 }
