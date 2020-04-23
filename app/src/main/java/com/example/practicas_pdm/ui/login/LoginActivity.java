@@ -151,6 +151,9 @@ public class LoginActivity extends AppCompatActivity {
                                 if (respuesta.indexOf("true") == 0){
                                     //loadingProgressBar.setVisibility(View.VISIBLE);
                                     sendMessage(v);
+                                }else{
+                                    String t = "Contraseña incorrecta";
+                                    Toast.makeText(getApplicationContext(), t, Toast.LENGTH_LONG).show();
                                 }
                             }
                         }, new Response.ErrorListener() {
