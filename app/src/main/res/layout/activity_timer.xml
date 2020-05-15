@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/RelativeLayout01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:id="@+id/msjInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="140sp"
+        android:gravity="center"
+        android:text="@string/Iniciar"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="272dp"
+        android:text="@string/cont"
+        android:textSize="60sp" />
+
+    <Button
+        android:id="@+id/botonIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="72sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="124sp"
+        android:layout_toStartOf="@+id/botonTerminar"
+        android:text="@string/iniciarB" />
+
+    <Button
+        android:id="@+id/botonTerminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="72sp"
+        android:layout_marginBottom="124sp"
+        android:text="@string/TerminarB" />
+</RelativeLayout>
